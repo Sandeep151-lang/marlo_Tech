@@ -1,4 +1,5 @@
 const User = require('../models/users')
+const jwt = require('jsonwebtoken')
 
 //singup for users
 exports.singUp = async(req,res)=>{
@@ -16,16 +17,13 @@ exports.singUp = async(req,res)=>{
     } 
  }
 
-//singin for users
+//signin for users
  exports.singIn = async(req,res)=>{
     const userExist = await User.findOne({email:req.body.email,has_password:req.body.has_password})
     try {
-        if(userExist._id){
+        if(userExist){
             const token = jwt.sign({_id:userExist._id},process.env.JWT_TOKEN,{expiresIn : '1h'});
             if(token){
-
-                console.log(token)
-
                 return res.status(200).send({message:"Login Successfull",token,data:userExist})
             }
             if(!token){
@@ -41,10 +39,11 @@ exports.singUp = async(req,res)=>{
  }
 
 
-//users for update
+//update for users
 exports.userUpdate = async(req,res)=>{
     try{
         const updateUser = await User.findByIdAndUpdate({_id : req.params._id},{$set : {...req.body}})
+        console.log(updateUser)
         res.status(200).send({message : "Update successfully",data : updateUser})
     }catch {
         return res.status(400).json({message :"Error"})

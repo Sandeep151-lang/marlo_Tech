@@ -37,6 +37,7 @@ const singInValidation = (req,res,next)=>{
     }else{
         next();
     }
+    next()
 }
 
 
