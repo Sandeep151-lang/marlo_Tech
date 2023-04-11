@@ -24,13 +24,16 @@ app.listen(process.env.PORT, ()=>{
 
 app.use('/',userRoute)
 
+app.get('/list',(req,res)=>{
+    res.send('hello')
+})
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Headers", "*");
-    res.header('Access-Control-Allow-Credentials', false);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    next()
-  })
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Headers", "*");
+//     res.header('Access-Control-Allow-Credentials', false);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     next()
+//   })
 
 
   module.exports = app;
