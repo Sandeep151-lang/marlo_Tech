@@ -27,7 +27,7 @@ const singUpValidation = (req,res,next)=>{
 const singInValidation = (req,res,next)=>{
     const schema = joi.object().keys({
         email:joi.string().email().required('Email is required.'),
-        has_password: joi.string().required('Password is required. '),
+        password: joi.string().required('Password is required. '),
     }).unknown(false)
 
     const {error} = schema.validate(req.body,{abortEarly:false})
@@ -37,7 +37,7 @@ const singInValidation = (req,res,next)=>{
     }else{
         next();
     }
-    next()
+    // next()
 }
 
 

@@ -3,14 +3,17 @@ const app = express()
 const env = require('dotenv');
 const bodyParser = require('body-parser');
 const userRoute = require('./routers/users')
+const cors = require('cors')
 
 
 env.config()
 
 require('./dbConn/dbConn')
 
+const corsOptions = ["http://localhost:3000/"]
+app.use(cors(corsOptions))
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
@@ -20,3 +23,14 @@ app.listen(process.env.PORT, ()=>{
 
 
 app.use('/',userRoute)
+
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Headers", "*");
+    res.header('Access-Control-Allow-Credentials', false);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    next()
+  })
+
+
+  module.exports = app;
