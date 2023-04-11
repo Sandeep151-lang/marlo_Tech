@@ -24,7 +24,7 @@ app.listen(process.env.PORT, ()=>{
 
 // app.use('/',userRoute)
 
-app.get('/list',(req,res)=>{
+app.get('/',(req,res)=>{
     res.send('hello')
 })
 
