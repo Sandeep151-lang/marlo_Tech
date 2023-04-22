@@ -4,7 +4,7 @@
   "description": "This is Marlo Tech Task",
   "main": "index.js",
   "engines": {
-    "node": "14.x"
+    "node": "16"
   },
   "scripts": {
     "start": "node ./src/index.js"
