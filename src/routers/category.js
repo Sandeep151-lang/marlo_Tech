@@ -9,6 +9,7 @@ const {createCategory,categoryList}= require('../controller/categories')
  
 router.post('/category/list',categoryList)
 router.post('/category/create',createCategory)
+router.get('/get',categoryList)
 
 
 
