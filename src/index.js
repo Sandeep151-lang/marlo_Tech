@@ -3,7 +3,9 @@ const app = express()
 const env = require('dotenv');
 const bodyParser = require('body-parser');
 const userRoute = require('./routers/users')
+const courRoute = require('./routers/course')
 const cors = require('cors')
+const categoryRoute = require('./routers/category')
 
 
 env.config()
@@ -17,14 +19,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, (err,d)=>{
+    if(err) console.log(err)
     console.log(`server is running in port ${process.env.PORT}`)
 })
 
 
-// app.use('/',userRoute)
+ app.use('/',userRoute)
+ app.use('/',courRoute)
+ app.use('/',categoryRoute)
 
-app.get('/',(req,res)=>{
+app.get('/user/list',(req,res)=>{
     res.send('hello')
 })
 

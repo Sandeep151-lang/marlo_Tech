@@ -1,6 +1,6 @@
 const User = require('../models/users')
 const jwt = require('jsonwebtoken')
-const {pagination} = require('../shared/pagination')
+//const {pagination} = require('../shared/pagination')
 
 //singup for users
 exports.singUp = async(req,res)=>{
@@ -35,7 +35,9 @@ exports.singUp = async(req,res)=>{
             return res.status(400).send({message:"Invalid Credential"})
         }
     } catch (error) {
-        return res.status(400).send({message: error})
+        logger.error("Error - ", error)
+    throw new Error(error)
+        // return res.status(400).send({message: error})
     }
  }
 
@@ -64,9 +66,11 @@ exports.getProfile=async ( req, res)=>{
 }
 
 exports.details=async(req,res)=>{
-   console.log(req.body)
+    
     try {
-        const count_data =await  User.paginate({"firstName":{$regex:req.body.query.firstName||"",$options:"i"}},req.body.options)
+     
+        const count_data =await  User.paginate({"firstName":{$regex:req.body.query.firstName || "",$options:"i"}},req.body.options)
+        
         return res.status(200).send(count_data)
         // const product_data =await  User.find({"firstName":{$regex:req.body.search || "",$options:"i"}}).skip(skip).limit(limit)
         //  const count_data =await  User.count()

@@ -4,9 +4,10 @@ const {singUpValidation,singInValidation} = require('../validation/validate')
 const {singUp,singIn,userUpdate,getProfile,details} = require('../controller/user')
 const {requireSigin} = require('../middleware/middleware');
 //const { pagination } = require('../shared/pagination');
+const {createCourse,detailCourse}= require('../controller/course')
 
  
-router.post('/singup',singUpValidation,singUp)
+router.post('/createCourse',createCourse)
 
 router.post('/singIn',singInValidation,singIn)
 

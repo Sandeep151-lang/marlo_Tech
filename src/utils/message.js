@@ -1,0 +1,3 @@
+exports.failureResponse=(data,message)=>{
+    
+}

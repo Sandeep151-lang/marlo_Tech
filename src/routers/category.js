@@ -4,16 +4,12 @@ const {singUpValidation,singInValidation} = require('../validation/validate')
 const {singUp,singIn,userUpdate,getProfile,details} = require('../controller/user')
 const {requireSigin} = require('../middleware/middleware');
 //const { pagination } = require('../shared/pagination');
+const {createCategory,categoryList}= require('../controller/categories')
 
  
-router.post('/singup',singUpValidation,singUp)
+router.post('/category/list',categoryList)
+router.post('/category/create',createCategory)
 
-router.post('/singIn',singInValidation,singIn)
 
-router.put('/:_id',requireSigin,singUpValidation,userUpdate)
-
-router.get('/getprofile',requireSigin,getProfile)
-
-router.post('/list',details )
 
 module.exports= router
