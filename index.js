@@ -12,15 +12,15 @@ env.config()
 
 require('./src/dbConn/dbConn')
 
-// const corsOptions = ["http://localhost:3000/"]
-// app.use(cors(corsOptions))
-const corsOptions = {
-    origin: true, //included origin as true
-    credentials: true, //included credentials as true
-  };
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//  const corsOptions = "*"
+// const corsOptions = {
+    //     origin: true, //included origin as true
+    //     credentials: true, //included credentials as true
+    //   };
+    app.use(cors({origin:"*"}))
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
 
 
 
