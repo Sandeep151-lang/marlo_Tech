@@ -2,15 +2,15 @@ const express = require('express')
 const app = express()
 const env = require('dotenv');
 const bodyParser = require('body-parser');
-const userRoute = require('./routers/users')
-const courRoute = require('./routers/course')
+const userRoute = require('./src/routers/users')
+const courRoute = require('./src/routers/course')
 const cors = require('cors')
-const categoryRoute = require('./routers/category')
+const categoryRoute = require('./src/routers/category')
 
 
 env.config()
 
-require('./dbConn/dbConn')
+require('./src/dbConn/dbConn')
 
 const corsOptions = ["http://localhost:3000/"]
 app.use(cors(corsOptions))
@@ -29,9 +29,9 @@ app.listen(process.env.PORT || 5000, (err,d)=>{
 })
 
 
- app.use('/',userRoute)
- app.use('/',courRoute)
- app.use('/',categoryRoute)
+ app.use('/user',userRoute)
+ app.use('/course',courRoute)
+ app.use('/category',categoryRoute)
 
 
 
