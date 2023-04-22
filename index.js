@@ -20,9 +20,9 @@ app.use(bodyParser.json());
 
 
 
-app.get('/user/list',(req,res)=>{
-    res.send('hello')
-})
+// app.get('/user/list',(req,res)=>{
+//     res.send('hello')
+// })
 app.listen(process.env.PORT || 5000, (err,d)=>{
     if(err) console.log(err)
     console.log(`server is running in port ${process.env.PORT}`)
