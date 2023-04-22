@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+
+app.get('/user/list',(req,res)=>{
+    res.send('hello')
+})
 app.listen(process.env.PORT, (err,d)=>{
     if(err) console.log(err)
     console.log(`server is running in port ${process.env.PORT}`)
@@ -29,9 +33,7 @@ app.listen(process.env.PORT, (err,d)=>{
  app.use('/',courRoute)
  app.use('/',categoryRoute)
 
-app.get('/user/list',(req,res)=>{
-    res.send('hello')
-})
+
 
 // app.use(function (req, res, next) {
 //     res.header("Access-Control-Allow-Headers", "*");
