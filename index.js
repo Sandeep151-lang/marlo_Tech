@@ -14,9 +14,10 @@ require('./src/dbConn/dbConn')
 
 // const corsOptions = ["http://localhost:3000/"]
 // app.use(cors(corsOptions))
-app.use(cors({
-    origin: ["http://localhost:3000/", '*']
-}));
+const corsOptions = {
+    origin: true, //included origin as true
+    credentials: true, //included credentials as true
+  };
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
