@@ -4,7 +4,10 @@
   "description": "This is Marlo Tech Task",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "node ./src/index.js"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "author": "sandeep",
   "license": "ISC",
