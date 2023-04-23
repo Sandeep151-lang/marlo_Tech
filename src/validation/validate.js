@@ -20,8 +20,6 @@ const singUpValidation = (req,res,next)=>{
     }else{
         next();
     }
-    
-    // next()
 }
 
 const singInValidation = (req,res,next)=>{
@@ -37,12 +35,26 @@ const singInValidation = (req,res,next)=>{
     }else{
         next();
     }
-    // next()
+}
+
+const CreatCategory =(req,res,next)=>{
+    const schema = joi.object().keys({
+        Slug : joi.string().required('Slug is required.'),
+        CategoryName : joi.string().required('Category Name is required.')
+    }).unknown(false)
+    const {error} = schema.validate(req.body,{abortEarly:false})
+    console.log(error)
+    if(error){
+        res.status(400).json({message:error.details.map((item)=>item?.message)})
+    }else{
+        next()
+    }
 }
 
 
 
 module.exports = {
     singUpValidation,
-    singInValidation
+    singInValidation,
+    CreatCategory
 };

@@ -16,7 +16,6 @@ exports.createCategory = async(req,res)=>{
 
 
 exports.categoryList= async(req,res)=>{
-    console.log(req.body)
     try {
         //const categoryList = await categorySchema.paginate({"CategoryName":{$regex:req.body.query.CategoryName || "",$options:"i"}},req.body.options)
         const categoryList = await categorySchema.paginate({},req.body.options)
